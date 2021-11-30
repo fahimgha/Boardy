@@ -1,0 +1,36 @@
+<h2>Ajout d'une colonne</h2>
+<form [formGroup]="columnForm" (ngSubmit)="secSubmit()">
+  <p>Le nom</p>
+  <input type="text" formControlName="titreColumn" />
+  <p>Le description</p>
+  <input type="text" formControlName="descriptionColumn" />
+  <button type="submit">CREER</button>
+</form>
+<div class="container">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>title</th>
+        <th>description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of col">
+        <td>
+          <span>{{ c._id }}</span>
+        </td>
+        <td>
+          <span>{{ c.title }}</span>
+        </td>
+        <td>
+          <span>{{ c.description }}</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- {{ columnNameControl.value }}
+{{ columnIDControl.value }}
+{{ columnPostionControl.value }} -->

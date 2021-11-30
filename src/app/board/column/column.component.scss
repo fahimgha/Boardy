@@ -1,0 +1,38 @@
+#column {
+  display: inline-block;
+  flex-direction: column;
+}
+
+.wrapper {
+  width: 350px;
+  height: 700px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  margin: 12px;
+  border: 1px solid #747474;
+  background-color: #ebecf0;
+}
+.header-card {
+  padding: 10px;
+  display: flex;
+}
+.box-column {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 10px;
+  height: 43px;
+  border: 1px solid #747474;
+  box-sizing: border-box;
+  border-radius: 10px;
+  .column-name {
+    margin: 0%;
+    font-size: 20px;
+    text-indent: 0;
+  }
+}
+.description {
+  display: flex;
+  padding: 0 20px;
+}

@@ -1,0 +1,16 @@
+<div class="app">
+  <h1>
+    {{ titleapp }}
+  </h1>
+</div>
+
+<app-column
+  [title]="column.title"
+  [description]="column.description"
+  *ngFor="let column of columns"
+>
+</app-column>
+<!-- <ul>
+  <li>{{ column._id }}<br />{{ column.title }}<br />{{ column.position }}</li>
+</ul> -->
+<app-add-column (onColumnAdded)="addColumn($event)"> </app-add-column>
