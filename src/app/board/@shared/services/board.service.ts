@@ -10,7 +10,7 @@ import { ColumnForm } from '../../add-column/add-column.component';
   providedIn: 'root',
 })
 export class BoardService {
-  URLCRUD = 'https://crudcrud.com/api/35213ac48b184493a04c81931be7ad56/column';
+  URLCRUD = 'https://crudcrud.com/api/5ecf4a6bc4674b05970649a4d28ba37f/column';
   httpClient: any;
   constructor(private http: HttpClient) {}
 
@@ -19,5 +19,8 @@ export class BoardService {
   }
   getColumns() {
     return this.http.get<Column[]>(this.URLCRUD);
+  }
+  deletePost(id: number) {
+    return this.http.delete(this.URLCRUD + '/' + id);
   }
 }

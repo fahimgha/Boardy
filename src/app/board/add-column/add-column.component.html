@@ -6,6 +6,7 @@
   <input type="text" formControlName="descriptionColumn" />
   <button type="submit">CREER</button>
 </form>
+
 <div class="container">
   <table class="table table-bordered table-striped">
     <thead>
@@ -25,6 +26,9 @@
         </td>
         <td>
           <span>{{ c.description }}</span>
+        </td>
+        <td>
+          <button (click)="deleteById(c._id)">Supprimer</button>
         </td>
       </tr>
     </tbody>

@@ -10,12 +10,11 @@ import { ColumnForm } from './add-column/add-column.component';
 })
 export class BoardComponent implements OnInit {
   constructor() {}
-  titleapp = 'Boardy App';
+  titleapp = 'Boardy';
   board = BOARD;
   columns = COLUMNS;
   //columns: Column[] =COLUMNS
   ngOnInit(): void {}
-
   addColumn(column: ColumnForm) {
     this.columns.push({
       _id: 6,

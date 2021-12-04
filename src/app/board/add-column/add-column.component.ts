@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { COLUMNS } from '../@shared/mock';
 import { Column } from '../@shared/models';
 import { BoardService } from '../@shared/services/board.service';
 
@@ -13,6 +12,7 @@ export class AddColumnComponent implements OnInit {
   @Output() onColumnAdded: EventEmitter<ColumnForm> = new EventEmitter();
   @Input() Columns!: Column;
   col: Column[] = [];
+  col2!: Object;
   constructor(private boardService: BoardService) {}
   ngOnInit(): void {
     throw new Error('Method not implemented.');
@@ -45,6 +45,12 @@ export class AddColumnComponent implements OnInit {
     this.boardService.getColumns().subscribe((columns) => {
       console.log(columns);
       this.col = columns;
+    });
+  }
+  deleteById(id: number) {
+    this.boardService.deletePost(id).subscribe((response) => {
+      console.log(response);
+      this.col2 = response;
     });
   }
 }
