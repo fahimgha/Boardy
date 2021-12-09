@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Column } from '../@shared/models/column';
 import { BoardService } from '../@shared/services/board.service';
 @Component({
@@ -7,9 +7,8 @@ import { BoardService } from '../@shared/services/board.service';
   styleUrls: ['./column.component.scss'],
 })
 export class ColumnComponent implements OnInit {
-  constructor(private boardService: BoardService) {}
-
-  @Input() Column!: Column;
+  @Input() column!: Column;
+  @Output() onColumnDeleted: EventEmitter<number> = new EventEmitter();
 
   col: Column[] = [];
   colDelete!: Object;
@@ -17,6 +16,9 @@ export class ColumnComponent implements OnInit {
   @Input() title!: string;
   @Input() description!: string;
   @Input() position!: number;
+
+  constructor(private boardService: BoardService) {}
+
   ngOnInit(): void {}
 
   deleteById(id: number) {
@@ -24,6 +26,12 @@ export class ColumnComponent implements OnInit {
       console.log(response);
       console.log(id);
       this.colDelete = response;
+    });
+  }
+
+  deleteColumn(id: number) {
+    this.boardService.deletePost(id).subscribe((response) => {
+      this.onColumnDeleted.emit(id);
     });
   }
 }

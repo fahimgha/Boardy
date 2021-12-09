@@ -11,7 +11,9 @@
   [title]="c.title"
   [description]="c.description"
   [position]="c.position"
-  *ngFor="let c of col"
+  [column]="c"
+  (onColumnDeleted)="deleteColumn($event)"
+  *ngFor="let c of columns"
 >
 </app-column>
 

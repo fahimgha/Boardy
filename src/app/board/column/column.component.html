@@ -1,34 +1,23 @@
 <div class="container">
-  <table class="table table-bordered table-striped">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>title</th>
-        <th>description</th>
-        <th>position</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <span>{{ _id }}</span>
-        </td>
-        <td>
-          <span>{{ title }}</span>
-        </td>
-        <td>
-          <span>{{ description }}</span>
-        </td>
-        <td>
-          <span>{{ position }}</span>
-        </td>
-        <td>
-          <button (click)="deleteById(_id)">Supprimer</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+  <div class="wrapper"></div>
 
+  <div class="card">
+    <header class="card-header">
+      <p class="card-header-title is-centered is-size-5 has-text-weight-normal">
+        {{ column.title }}
+      </p>
+    </header>
+    <div class="card-content">
+      <div class="content">
+        {{ column.description }}
+      </div>
+    </div>
+    <footer class="card-footer">
+      <a class="card-footer-item">Save</a>
+      <a class="card-footer-item">Edit</a>
+      <a class="card-footer-item" (click)="deleteColumn(column._id)">Delete</a>
+    </footer>
+  </div>
+</div>
 <app-card></app-card>
 <app-add-card></app-add-card>

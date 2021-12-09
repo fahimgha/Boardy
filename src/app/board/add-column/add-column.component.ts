@@ -9,8 +9,8 @@ import { BoardService } from '../@shared/services/board.service';
   styleUrls: ['./add-column.component.scss'],
 })
 export class AddColumnComponent implements OnInit {
-  @Output() onColumnAdded: EventEmitter<Column> = new EventEmitter();
   @Input() Columns!: Column;
+  @Output() onColumnAdded: EventEmitter<Column> = new EventEmitter();
   col: Column[] = [];
   col2!: Object;
   id!: number;
@@ -42,21 +42,5 @@ export class AddColumnComponent implements OnInit {
         position: position,
       })
       .subscribe(() => {});
-    this.boardService.getColumns().subscribe((columns) => {
-      console.log(columns);
-      this.col = columns;
-    });
-  }
-
-  deleteColumn(id: number) {
-    this.boardService.deletePost(id).subscribe((response) => {
-      console.log(response);
-      console.log(id);
-      this.col2 = response;
-    });
-    this.boardService.getColumns().subscribe((columns) => {
-      console.log(columns);
-      this.col = columns;
-    });
   }
 }
