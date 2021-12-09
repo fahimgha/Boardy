@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BOARD } from './@shared/mock/board.mock';
 import { COLUMNS } from './@shared/mock/column.mock';
-import { ColumnForm } from './add-column/add-column.component';
+import { Column } from './@shared/models/column';
 
 @Component({
   selector: 'app-board',
@@ -11,16 +11,19 @@ import { ColumnForm } from './add-column/add-column.component';
 export class BoardComponent implements OnInit {
   constructor() {}
   titleapp = 'Boardy';
-  board = BOARD;
-  columns = COLUMNS;
+  //board = BOARD;
+  //columns = COLUMNS;
+  col: Column[] = [];
+  columns: Column[] = [];
   //columns: Column[] =COLUMNS
   ngOnInit(): void {}
-  addColumn(column: ColumnForm) {
-    this.columns.push({
-      _id: 6,
-      position: 7,
+
+  addColumn(column: Column) {
+    this.col.push({
+      _id: column._id,
       title: column.title,
       description: column.description,
+      position: column.position,
     });
   }
 }

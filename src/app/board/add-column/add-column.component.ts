@@ -9,52 +9,54 @@ import { BoardService } from '../@shared/services/board.service';
   styleUrls: ['./add-column.component.scss'],
 })
 export class AddColumnComponent implements OnInit {
-  @Output() onColumnAdded: EventEmitter<ColumnForm> = new EventEmitter();
+  @Output() onColumnAdded: EventEmitter<Column> = new EventEmitter();
   @Input() Columns!: Column;
   col: Column[] = [];
   col2!: Object;
+  id!: number;
   constructor(private boardService: BoardService) {}
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
+  ngOnInit(): void {}
 
   columnForm = new FormGroup({
     titreColumn: new FormControl('', [Validators.required]),
     descriptionColumn: new FormControl('', [Validators.required]),
     positionColumn: new FormControl('', [Validators.required]),
-    textColumn: new FormControl('', [Validators.required]),
   });
   submit() {
-    //console.log(this.columnIDControl);
     const title = this.columnForm.get('titreColumn')?.value;
+    const position = this.columnForm.get('positionColumn')?.value;
+    //const _id = this.columnForm.get('idColumn')?.value;
     const description = this.columnForm.get('descriptionColumn')?.value;
-    this.onColumnAdded.emit({ title: title, description: description });
-  }
-  secSubmit() {
-    const title = this.columnForm.get('titreColumn')?.value;
-    const description = this.columnForm.get('descriptionColumn')?.value;
-    this.onColumnAdded.emit({ title: title, description: description });
-    const c: Column = { title, description } as Column;
+    this.onColumnAdded.emit({
+      _id: this.id,
+      title: title,
+      description: description,
+      position: position,
+    });
+    //const c: Column = { title, description } as Column;
     this.boardService
       .addColumn({
+        _id: this.id,
         title: title,
         description: description,
+        position: position,
       })
       .subscribe(() => {});
-
     this.boardService.getColumns().subscribe((columns) => {
       console.log(columns);
       this.col = columns;
     });
   }
-  deleteById(id: number) {
+
+  deleteColumn(id: number) {
     this.boardService.deletePost(id).subscribe((response) => {
       console.log(response);
+      console.log(id);
       this.col2 = response;
     });
+    this.boardService.getColumns().subscribe((columns) => {
+      console.log(columns);
+      this.col = columns;
+    });
   }
-}
-export interface ColumnForm {
-  title: string;
-  description: string;
 }

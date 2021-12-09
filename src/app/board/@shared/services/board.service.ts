@@ -4,17 +4,16 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { Column } from '../models';
-import { ColumnForm } from '../../add-column/add-column.component';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BoardService {
-  URLCRUD = 'https://crudcrud.com/api/5ecf4a6bc4674b05970649a4d28ba37f/column';
+  URLCRUD = 'https://crudcrud.com/api/f605bc2b076540c789bd825277656ddf/column';
   httpClient: any;
-  constructor(private http: HttpClient) {}
 
-  addColumn(column: ColumnForm): Observable<Column> {
+  constructor(private http: HttpClient) {}
+  addColumn(column: Column): Observable<Column> {
     return this.http.post<Column>(this.URLCRUD, column);
   }
   getColumns() {
@@ -22,5 +21,8 @@ export class BoardService {
   }
   deletePost(id: number) {
     return this.http.delete(this.URLCRUD + '/' + id);
+  }
+  updateColumn(column: Column): Observable<Column> {
+    return this.http.put<Column>(this.URLCRUD + '/' + column._id, column);
   }
 }

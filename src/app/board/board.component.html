@@ -1,16 +1,18 @@
 <div class="app">
-  <h1>
-    {{ titleapp }}
-  </h1>
+  <div class="column is-three-quarters">
+    <div class="box has-text-centered is-size-4">
+      {{ titleapp }}
+    </div>
+  </div>
 </div>
 
 <app-column
-  [title]="column.title"
-  [description]="column.description"
-  *ngFor="let column of columns"
+  [_id]="c._id"
+  [title]="c.title"
+  [description]="c.description"
+  [position]="c.position"
+  *ngFor="let c of col"
 >
 </app-column>
-<!-- <ul>
-  <li>{{ column._id }}<br />{{ column.title }}<br />{{ column.position }}</li>
-</ul> -->
+
 <app-add-column (onColumnAdded)="addColumn($event)"> </app-add-column>
