@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { BOARD } from './@shared/mock/board.mock';
-import { COLUMNS } from './@shared/mock/column.mock';
 import { Column } from './@shared/models/column';
 import { BoardService } from './@shared/services/board.service';
 
@@ -12,11 +10,13 @@ import { BoardService } from './@shared/services/board.service';
 export class BoardComponent implements OnInit {
   titleapp = 'Boardy';
   columns: Column[] = [];
-
+  //columnsUpdating: Column[] = [];
+  columnUpdating?: Column;
+  
   constructor(private boardService: BoardService) {}
   ngOnInit(): void {
     this.boardService.getColumns().subscribe((columns) => {
-      console.log(columns);
+      //console.log(columns);
       this.columns = columns;
     });
   }
@@ -29,7 +29,10 @@ export class BoardComponent implements OnInit {
       position: column.position,
     });
   }
-
+  
+  updateColumn(column: Column) {
+  this.columnUpdating = column;
+  }
   deleteColumn(id: number) {
     this.columns = this.columns.filter((c) => c._id != id);
   }

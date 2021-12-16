@@ -1,20 +1,37 @@
-<div class="app">
-  <div class="column is-three-quarters">
-    <div class="box has-text-centered is-size-4">
+
+  <div class="task-container columns is-multiline">
+    <div class="card column has-text-centered is-half is-offset-one-quarter is-size-4">
       {{ titleapp }}
     </div>
-  </div>
 </div>
+    <div class="box is-centered ">
+      <article class="media">
+        <div class="media-left">
+          <figure class="image is-128x128">
+            <img src="../assets/avatar.png" alt="Image" />
+          </figure>
+        </div>
+        <div class="media-content is-align-content-center is-hcentered">
+          <div class="content">
+            <p class="subtitle">
+              <strong class="title">Fahim GHARSA</strong>
+              <br />
+              My trello
+              <br />
+              Here all tasks in the project.
+            </p>
+          </div>
+        </div>
+      </article>
+    </div>
 
+ 
 <app-column
-  [_id]="c._id"
-  [title]="c.title"
-  [description]="c.description"
-  [position]="c.position"
   [column]="c"
+  (onColumnEdit)="updateColumn($event)"
   (onColumnDeleted)="deleteColumn($event)"
   *ngFor="let c of columns"
 >
 </app-column>
 
-<app-add-column (onColumnAdded)="addColumn($event)"> </app-add-column>
+<app-add-column [columnUpdating]="columnUpdating" (onColumnAdded)="addColumn($event)" > </app-add-column>
