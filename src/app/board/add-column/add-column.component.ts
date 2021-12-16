@@ -46,7 +46,14 @@ export class AddColumnComponent implements OnInit {
     //const _id = this.columnForm.get('idColumn')?.value;
     const description = this.columnForm.get('descriptionColumn')?.value;
     
-
+    if(this.columnUpdating!=undefined){
+      this.boardService.updateColumn({
+        _id: this.id,
+        title: title,
+        description: description,
+        position: position,
+      });
+    }
     this.onColumnAdded.emit({
       _id: this.id,
       title: title,
