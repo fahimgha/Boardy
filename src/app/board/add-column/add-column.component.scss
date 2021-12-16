@@ -1,1 +1,14 @@
+.test{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
+  .test2{
+    position:absolute;
+    bottom:10%;
+    width:100%;
+    padding-top:50px;
+    height:50px;
+  }
+
+}

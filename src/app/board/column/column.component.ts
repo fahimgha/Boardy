@@ -31,8 +31,6 @@ export class ColumnComponent implements OnInit {
   }
   deleteById(id: number) {
     this.boardService.deletePost(id).subscribe((response) => {
-      console.log(response);
-      console.log(id);
       this.colDelete = response;
     });
   }

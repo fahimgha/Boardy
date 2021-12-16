@@ -9,7 +9,7 @@ import { Card, Column } from '../models';
   providedIn: 'root',
 })
 export class BoardService {
-  URLCRUD = 'https://crudcrud.com/api/cf2c701c6be240b5bb65c0734142b0f5';
+  URLCRUD = 'https://crudcrud.com/api/d638537382ef4721b6b50b12921952aa';
   httpClient: any;
 
   constructor(private http: HttpClient) {}
@@ -31,7 +31,7 @@ export class BoardService {
   getColumn(id: number) {
     return this.http.get(this.URLCRUD  + '/column/' + id);
   }
-  updateColumn(column: Column): Observable<Column> {
-    return this.http.put<Column>(this.URLCRUD + '/column/'+ column._id, column);
+  updateColumn(id:number,column: Column): Observable<Column> {
+    return this.http.put<Column>(this.URLCRUD + '/column/'+ id, column);
   }
 }

@@ -1,6 +1,5 @@
 <div class="container">
   <div class="wrapper"></div>
-
   <div class="card">
     <header class="card-header">
       <p class="card-header-title has-background-primary has-text-white is-centered is-size-4 has-text-weight-bold">
@@ -12,7 +11,7 @@
         {{ column.description }}
       </div>
     </div>
-    <app-card   [card]="card"
+    <app-card [card]="card"
     *ngFor="let card of cards"></app-card>
     
     <footer class="card-footer">
@@ -20,7 +19,5 @@
       <a class="card-footer-item" (click)="deleteColumn(column._id)">Delete</a>
     </footer>
   </div>
-
-
 <app-add-card (onCardAdded)="addCard($event)"></app-add-card>
 </div>

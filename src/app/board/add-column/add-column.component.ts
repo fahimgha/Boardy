@@ -27,7 +27,6 @@ export class AddColumnComponent implements OnInit {
     console.log(column);
   }
   col: Column[] = [];
-  col2!: Object;
   id!: number;
   constructor(private boardService: BoardService) {}
   ngOnInit():void {
@@ -43,16 +42,10 @@ export class AddColumnComponent implements OnInit {
     const title = this.columnForm.get('titreColumn')?.value;
     
     const position = this.columnForm.get('positionColumn')?.value;
-    //const _id = this.columnForm.get('idColumn')?.value;
     const description = this.columnForm.get('descriptionColumn')?.value;
     
     if(this.columnUpdating!=undefined){
-      this.boardService.updateColumn({
-        _id: this.id,
-        title: title,
-        description: description,
-        position: position,
-      });
+
     }
     this.onColumnAdded.emit({
       _id: this.id,
@@ -60,6 +53,7 @@ export class AddColumnComponent implements OnInit {
       description: description,
       position: position,
     });
+    if(this.columnUpdating == undefined){
     this.boardService
       .addColumn({
         _id: this.id,
@@ -68,7 +62,9 @@ export class AddColumnComponent implements OnInit {
         position: position,
       })
       .subscribe(() => {});
-      
+    }else{
+      this.boardService.updateColumn(this.columnUpdating,this.Columns)
+    }
   }
 
 }
