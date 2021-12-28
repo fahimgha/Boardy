@@ -1,31 +1,38 @@
-
-  <div class="task-container columns is-multiline">
-    <div class="card column has-text-centered is-half is-offset-one-quarter is-size-4">
-      {{ titleapp }}
-    </div>
+<div class="task-container columns is-multiline">
+  <div
+    class="
+      card
+      column
+      has-text-centered
+      is-half is-offset-one-quarter is-size-4
+    "
+  >
+    {{ titleapp }}
+  </div>
 </div>
-    <div class="box is-centered ">
-      <article class="media">
-        <div class="media-left">
-          <figure class="image is-128x128">
-            <img src="../assets/avatar.png" alt="Image" />
-          </figure>
+<div class="columns is-centered">
+  <div class="box is-centered is-four-fifths boxBoard">
+    <article class="media">
+      <div class="media-left">
+        <figure class="image is-128x128">
+          <img src="../assets/avatar.png" alt="Image" />
+        </figure>
+      </div>
+      <div class="media-content is-align-content-center is-hcentered">
+        <div class="content">
+          <p class="subtitle">
+            <strong class="title">Fahim GHARSA</strong>
+            <br />
+            My trello
+            <br />
+            Here all tasks in the project.
+          </p>
+          <a routerLink="/first-component" routerLinkActive="active">test</a>
         </div>
-        <div class="media-content is-align-content-center is-hcentered">
-          <div class="content">
-            <p class="subtitle">
-              <strong class="title">Fahim GHARSA</strong>
-              <br />
-              My trello
-              <br />
-              Here all tasks in the project.
-            </p>
-          </div>
-        </div>
-      </article>
-    </div>
-
- 
+      </div>
+    </article>
+  </div>
+</div>
 <app-column
   [column]="c"
   (onColumnEdit)="updateColumn($event)"
@@ -34,4 +41,9 @@
 >
 </app-column>
 
-<app-add-column [columnUpdating]="columnUpdating" (onColumnAdded)="addColumn($event)" > </app-add-column>
+<app-add-column
+  [columnUpdating]="columnUpdating"
+  (onColumnUpdate)="updateTest($event)"
+  (onColumnAdded)="addColumn($event)"
+>
+</app-add-column>

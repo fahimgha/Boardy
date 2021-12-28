@@ -40,7 +40,7 @@ export class ColumnComponent implements OnInit {
       this.onColumnDeleted.emit(id);
     });
   }
-  updateColumn(column: Column){
+  updateColumn(column: Column) {
     this.onColumnEdit.emit(column);
     console.log(column);
   }

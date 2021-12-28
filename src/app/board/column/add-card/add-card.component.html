@@ -1,17 +1,19 @@
 <div class="column addCard">
-  <form [formGroup]="cardForm" (ngSubmit)="createCard()">
+  <form [formGroup]="cardForm">
     <div class="field has-addons">
       <div class="control">
-        <input class="input" type="text" formControlName="titleCard" placeholder="Title of card">
+        <input
+          class="input"
+          type="text"
+          formControlName="titleCard"
+          placeholder="Title of card"
+        />
       </div>
-      
       <div class="control">
         <button type="submit" class="button button is-success is-light">
           Create
         </button>
       </div>
     </div>
-</form>
+  </form>
 </div>
-
-

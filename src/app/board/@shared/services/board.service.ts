@@ -9,15 +9,15 @@ import { Card, Column } from '../models';
   providedIn: 'root',
 })
 export class BoardService {
-  URLCRUD = 'https://crudcrud.com/api/d638537382ef4721b6b50b12921952aa';
+  URLCRUD = 'https://crudcrud.com/api/1880608e6e714624965e03f1bbbde4c5';
   httpClient: any;
 
   constructor(private http: HttpClient) {}
-  addColumn(column: Column): Observable<Column> {
-    return this.http.post<Column>(this.URLCRUD+ '/column', column);
+  addColumn(column: Partial<Column>): Observable<Column> {
+    return this.http.post<Column>(this.URLCRUD + '/column', column);
   }
   addCard(card: Card): Observable<Card> {
-    return this.http.post<Card>(this.URLCRUD + '/card' , card);
+    return this.http.post<Card>(this.URLCRUD + '/card', card);
   }
   getCards() {
     return this.http.get<Card[]>(this.URLCRUD + '/card');
@@ -29,9 +29,9 @@ export class BoardService {
     return this.http.delete(this.URLCRUD + '/column/' + id);
   }
   getColumn(id: number) {
-    return this.http.get(this.URLCRUD  + '/column/' + id);
+    return this.http.get(this.URLCRUD + '/column/' + id);
   }
-  updateColumn(id:number,column: Column): Observable<Column> {
-    return this.http.put<Column>(this.URLCRUD + '/column/'+ id, column);
+  updateColumn(id: number, column: Partial<Column>): Observable<Column> {
+    return this.http.put<Column>(this.URLCRUD + '/column/' + id, column);
   }
 }

@@ -12,7 +12,7 @@ export class BoardComponent implements OnInit {
   columns: Column[] = [];
   //columnsUpdating: Column[] = [];
   columnUpdating?: Column;
-  
+
   constructor(private boardService: BoardService) {}
   ngOnInit(): void {
     this.boardService.getColumns().subscribe((columns) => {
@@ -29,11 +29,28 @@ export class BoardComponent implements OnInit {
       position: column.position,
     });
   }
-  
+
   updateColumn(column: Column) {
-  this.columnUpdating = column;
+    this.columnUpdating = column;
   }
+
   deleteColumn(id: number) {
     this.columns = this.columns.filter((c) => c._id != id);
+  }
+
+  updateTest(column: Column) {
+    // const index = this.columns.findIndex((c) => c._id == column._id);
+    // console.log('column to update > ', column);
+    // if (index != -1) {
+    //   console.log(this.columns[index]);
+    //   this.columns[index] = column;
+    // }
+
+    this.columns = this.columns.map((c) => {
+      if (c._id == column._id) {
+        c = column;
+      }
+      return c;
+    });
   }
 }

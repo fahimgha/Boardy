@@ -1,8 +1,13 @@
-
 .box {
   display: flex;
   justify-content: center;
 }
-.task-container{
+.task-container {
   margin: 15px;
+}
+.boxBoard {
+  background-color: #d4ffd4;
+}
+.columns {
+  margin-top: 20px;
 }
